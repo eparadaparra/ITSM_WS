@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2026-02-06T06:51:06.5560446Z||;</History>
+    <History>True|2026-02-06T13:54:43.7998801Z||;True|2026-02-06T00:51:06.5560446-06:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -14,10 +14,10 @@
       <publishTime>06/16/2024 14:47:02</publishTime>
     </File>
     <File Include="bin/ITSM_WS.dll">
-      <publishTime>02/06/2026 00:51:04</publishTime>
+      <publishTime>02/06/2026 07:54:42</publishTime>
     </File>
     <File Include="bin/ITSM_WS.pdb">
-      <publishTime>02/06/2026 00:51:04</publishTime>
+      <publishTime>02/06/2026 07:54:42</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 17:10:50</publishTime>
@@ -188,7 +188,7 @@
       <publishTime>02/04/2026 18:56:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/06/2026 00:51:05</publishTime>
+      <publishTime>02/06/2026 07:54:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -11,9 +12,11 @@ namespace ITSM_WS.Services
 
         public ExeconService(string baseUrl, string ambiente)
         {
+            int timeoutSeconds = Int32.Parse(ConfigurationManager.AppSettings["HttpClient.TimeoutSeconds"]);
             _client = new HttpClient
             {
-                BaseAddress = new System.Uri(baseUrl)
+                BaseAddress = new System.Uri(baseUrl),
+                Timeout = TimeSpan.FromSeconds(timeoutSeconds)
             };
             _ambiente = ambiente;
         }
@@ -22,10 +25,8 @@ namespace ITSM_WS.Services
         {
             using (var request = new HttpRequestMessage(HttpMethod.Post, $"{_ambiente}/api/Execon/ScheduledTask/{assignmentId}"))
             {
-                // Agregar el recId como header
                 request.Headers.Add("Idempotency-Key", idempotencyKey);
 
-                // Enviar la solicitud
                 var response = await _client.SendAsync(request);
 
                 return response.IsSuccessStatusCode;
