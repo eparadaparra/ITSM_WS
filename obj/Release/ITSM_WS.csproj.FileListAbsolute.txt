@@ -69,3 +69,6 @@ C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\obj\Release\ITSM_WS.csp
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\obj\Release\ITSM_WS.csproj.Up2Date
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\obj\Release\ITSM_WS.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\obj\Release\ITSM_WS.pdb
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.pdb
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.dll.config

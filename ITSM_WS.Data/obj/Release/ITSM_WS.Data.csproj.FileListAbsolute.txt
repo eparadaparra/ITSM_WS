@@ -1,0 +1,12 @@
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\ITSM_WS.Data.dll.config
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\ITSM_WS.Data.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\ITSM_WS.Data.pdb
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\EntityFramework.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\EntityFramework.xml
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\obj\Release\ITSM_WS.Data.csproj.AssemblyReference.cache
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\obj\Release\ITSM_WS.Data.csproj.CoreCompileInputs.cache
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\obj\Release\ITSM_WS..6240F3D0.Up2Date
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\obj\Release\ITSM_WS.Data.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\ITSM_WS.Data\obj\Release\ITSM_WS.Data.pdb

@@ -52,11 +52,14 @@ C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\roslyn\VBCSCompiler
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\EntityFramework.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\EntityFramework.SqlServer.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\Newtonsoft.Json.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\System.Net.Http.Formatting.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\System.Web.Http.dll
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\System.Web.Http.WebHost.dll
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.pdb
+C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\ITSM_WS.Data.dll.config
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\EntityFramework.xml
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\EntityFramework.SqlServer.xml
 C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\Newtonsoft.Json.xml

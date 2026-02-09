@@ -92,7 +92,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\IdempotencyDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -100,12 +99,10 @@
       <DependentUpon>ITSM_WS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\ApiResponse.cs" />
-    <Compile Include="Models\IdempotencyEvent.cs" />
-    <Compile Include="Models\IdempotencyRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ExeconService.cs" />
     <Compile Include="Services\IdempotencyService.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -116,7 +113,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="ITSM_WS.Data\ITSM_WS.Data.csproj">
+      <Project>{204729d7-c3cb-48df-a05c-08cd3dd7975e}</Project>
+      <Name>ITSM_WS.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

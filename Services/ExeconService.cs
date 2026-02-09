@@ -29,6 +29,8 @@ namespace ITSM_WS.Services
 
                 var response = await _client.SendAsync(request);
 
+                var res = await response.Content.ReadAsStringAsync();
+
                 return response.IsSuccessStatusCode;
             }
         }

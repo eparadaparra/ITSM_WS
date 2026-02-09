@@ -2,8 +2,8 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
-using ITSM_WS.Data;
-using ITSM_WS.Models;
+using ITSM_WS.Data.Data;
+using ITSM_WS.Data.Models;
 
 namespace ITSM_WS.Services
 {
@@ -18,29 +18,43 @@ namespace ITSM_WS.Services
 
         public async Task<IdempotencyRequest> StartOrGetAsync(string recId, string endpoint, string requestHash)
         {
+            System.Diagnostics.Trace.TraceInformation($"StartOrGetAsync: {recId}, {endpoint}");
+            var existing = await _db.IdempotencyRequests
+                .FirstOrDefaultAsync(tbl => tbl.RecId == recId && tbl.Endpoint == endpoint)
+                .ConfigureAwait(false);
+
+            if (existing != null)
+            {
+                return existing;
+            }
+
             try
             {
                 var entity = new IdempotencyRequest
                 {
-                    RecId          = recId,
+                    RecId = recId,
                     IdempotencyKey = recId,
-                    Endpoint       = endpoint,
-                    RequestHash    = requestHash,
-                    Status         = IdempotencyStatus.Pending,
-                    AttemptCount   = 0,
-                    LastAttemptAt  = null,
-                    CreatedAt      = DateTime.UtcNow
+                    Endpoint = endpoint,
+                    RequestHash = requestHash,
+                    Status = IdempotencyStatus.Pending,
+                    AttemptCount = 0,
+                    LastAttemptAt = null,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow 
                 };
 
                 _db.IdempotencyRequests.Add(entity);
-                await _db.SaveChangesAsync();
+                System.Diagnostics.Trace.TraceInformation($"Intentando SaveChangesAsync para {recId}");
+                await _db.SaveChangesAsync()
+                    .ConfigureAwait(false);
+                System.Diagnostics.Trace.TraceInformation($"SaveChangesAsync exitoso para {recId}");
 
                 return entity;
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                // ⚠️ Ya existe → recuperar
-                return await _db.IdempotencyRequests.FirstAsync(tbl => tbl.RecId == recId && tbl.Endpoint == endpoint);
+                System.Diagnostics.Trace.TraceWarning($"DbUpdateException para {recId}: {ex.Message}");
+                return await _db.IdempotencyRequests.FirstAsync(tbl => tbl.RecId == recId && tbl.Endpoint == endpoint).ConfigureAwait(false);
             }
         }
 
@@ -70,7 +84,7 @@ namespace ITSM_WS.Services
 
             try
             {
-                await _db.SaveChangesAsync();
+                await _db.SaveChangesAsync().ConfigureAwait(false);
                 return true; // 🎯 ESTE PROCESO GANÓ
             }
             catch (DbUpdateConcurrencyException)
@@ -87,8 +101,8 @@ namespace ITSM_WS.Services
             entity.Response = reason;
             entity.UpdatedAt = DateTime.UtcNow;
 
-            await LogEventAsync(entity, old, entity.Status, reason);
-            await _db.SaveChangesAsync();
+            await LogEventAsync(entity, old, entity.Status, reason).ConfigureAwait(false);
+            await _db.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public async Task CompleteAsync(IdempotencyRequest entity, bool success, string response)
@@ -102,8 +116,8 @@ namespace ITSM_WS.Services
             entity.Response = response;
             entity.UpdatedAt = DateTime.UtcNow;
 
-            await LogEventAsync(entity, old, entity.Status, success ? "OK" : "Error en ejecución");
-            await _db.SaveChangesAsync();
+            await LogEventAsync(entity, old, entity.Status, success ? "OK" : "Error en ejecución").ConfigureAwait(false);
+            await _db.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public bool IsInProgressExpired(IdempotencyRequest entity, int timeoutMinutes)
@@ -121,14 +135,13 @@ namespace ITSM_WS.Services
 
             var old = entity.Status;
 
-            // Reclamamos el lock (mantenemos InProgress)
             entity.Status = IdempotencyStatus.InProgress;
             entity.UpdatedAt = DateTime.UtcNow;
 
             try
             {
-                await LogEventAsync(entity, old, IdempotencyStatus.InProgress, "Takeover por timeout: lock reclamado por nuevo proceso");
-                await _db.SaveChangesAsync();
+                await LogEventAsync(entity, old, IdempotencyStatus.InProgress, "Takeover por timeout: lock reclamado por nuevo proceso").ConfigureAwait(false);
+                await _db.SaveChangesAsync().ConfigureAwait(false);
                 return true;
             }
             catch (DbUpdateConcurrencyException)
@@ -136,22 +149,6 @@ namespace ITSM_WS.Services
                 // Otro proceso ganó el takeover
                 return false;
             }
-        }
-
-        private async Task LogEventAsync(IdempotencyRequest entity, IdempotencyStatus oldStatus, IdempotencyStatus newStatus, string message)
-        {
-            _db.IdempotencyEvents.Add(new IdempotencyEvent
-            {
-                RecId        = entity.RecId,
-                Endpoint     = entity.Endpoint,
-                OldStatus    = oldStatus,
-                NewStatus    = newStatus,
-                AttemptCount = entity.AttemptCount,
-                Message      = message,
-                CreatedAt    = DateTime.UtcNow
-            });
-
-            await _db.SaveChangesAsync();
         }
 
         public async Task MarkFailedAsync(IdempotencyRequest entity, string error)
@@ -167,11 +164,26 @@ namespace ITSM_WS.Services
             entity.Response = error;
             entity.UpdatedAt = DateTime.UtcNow;
 
-            await LogEventAsync(entity, oldStatus, IdempotencyStatus.Failed, error);
+            await LogEventAsync(entity, oldStatus, IdempotencyStatus.Failed, error).ConfigureAwait(false);
 
-            await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync().ConfigureAwait(false);
         }
+                       
+        private Task LogEventAsync(IdempotencyRequest entity, IdempotencyStatus oldStatus, IdempotencyStatus newStatus, string message)
+        {
+            _db.IdempotencyEvents.Add(new IdempotencyEvent
+            {
+                RecId = entity.RecId,
+                Endpoint = entity.Endpoint,
+                OldStatus = oldStatus,
+                NewStatus = newStatus,
+                AttemptCount = entity.AttemptCount,
+                Message = message,
+                CreatedAt = DateTime.UtcNow
+            });
 
+            return Task.CompletedTask;
+        }
 
     }
 }

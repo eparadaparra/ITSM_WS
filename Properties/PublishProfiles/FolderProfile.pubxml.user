@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\elias.parada\OneDrive\Programacion\APIs\ITSM_WS\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2026-02-06T13:54:43.7998801Z||;True|2026-02-06T00:51:06.5560446-06:00||;</History>
+    <History>True|2026-02-09T18:12:56.0760356Z||;True|2026-02-06T07:54:43.7998801-06:00||;True|2026-02-06T00:51:06.5560446-06:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -13,11 +13,20 @@
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>06/16/2024 14:47:02</publishTime>
     </File>
+    <File Include="bin/ITSM_WS.Data.dll">
+      <publishTime>02/09/2026 12:12:54</publishTime>
+    </File>
+    <File Include="bin/ITSM_WS.Data.dll.config">
+      <publishTime>02/08/2026 09:24:53</publishTime>
+    </File>
+    <File Include="bin/ITSM_WS.Data.pdb">
+      <publishTime>02/09/2026 12:12:54</publishTime>
+    </File>
     <File Include="bin/ITSM_WS.dll">
-      <publishTime>02/06/2026 07:54:42</publishTime>
+      <publishTime>02/09/2026 12:12:54</publishTime>
     </File>
     <File Include="bin/ITSM_WS.pdb">
-      <publishTime>02/06/2026 07:54:42</publishTime>
+      <publishTime>02/09/2026 12:12:54</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/05/2018 17:10:50</publishTime>
@@ -188,7 +197,7 @@
       <publishTime>02/04/2026 18:56:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/06/2026 07:54:42</publishTime>
+      <publishTime>02/09/2026 12:12:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

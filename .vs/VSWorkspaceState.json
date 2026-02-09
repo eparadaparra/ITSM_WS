@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Infrastructure",
+    "\\Models",
+    "\\Services"
+  ],
+  "SelectedNode": "\\Models\\IdempotencyRequest.cs",
+  "PreviewInSolutionExplorer": false
+}

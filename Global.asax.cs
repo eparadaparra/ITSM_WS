@@ -1,6 +1,5 @@
 using System.Data.Entity;
-using System.Web.Http;
-using ITSM_WS.Data;
+using ITSM_WS.Data.Data;
 
 namespace ITSM_WS
 {
